@@ -15,6 +15,6 @@ public class WeatherTest extends BaseTest {
     public void verifyTemperatureForCity() {
         SoftAssert softAssert = new SoftAssert();
         homeActions.navigateToWeatherSection();
-        weatherActions.selectCityAndOpenDetailsInMap("Pune");
+        System.out.println(weatherActions.getWeatherDetailForCity("Pune", "Temp in Degrees"));
     }
 }

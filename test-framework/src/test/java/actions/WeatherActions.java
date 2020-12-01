@@ -1,5 +1,6 @@
 package actions;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.WeatherPage;
@@ -18,5 +19,11 @@ public class WeatherActions extends BaseAction {
                 .selectCityFromList(cityName)
                 .clickOnCityInMap(cityName)
                 .waitForWeatherPopup();
+    }
+
+    @Step
+    public String getWeatherDetailForCity(String cityName, String weatherDetail) {
+        selectCityAndOpenDetailsInMap(cityName);
+        return weatherPage.getWeatherDetailsForCity(weatherDetail);
     }
 }

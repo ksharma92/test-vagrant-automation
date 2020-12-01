@@ -20,5 +20,6 @@ public class SeleniumBaseFramework {
     public void browserSetup(@Optional("CHROME") String browser) throws Exception {
         setProperties();
         driver = WebDriverFactory.getDriver(Browsers.valueOf(browser), properties);
+
     }
 }

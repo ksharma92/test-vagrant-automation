@@ -17,7 +17,7 @@ public class ObjectIdentificationUtils {
         try {
             return driver.findElement(returnLocatorBy(selector, locator));
         } catch (NoSuchElementException e) {
-            log.warn("Unable to find object of type {} having value {}", selector, locator);
+//            log.warn("Unable to find object of type {} having value {}", selector, locator);
             return null;
         }
     }
@@ -26,7 +26,7 @@ public class ObjectIdentificationUtils {
         try {
             return driver.findElements(returnLocatorBy(selector, locator));
         } catch (NoSuchElementException e) {
-            log.warn("Unable to find object of type {} having value {}", selector, locator);
+//            log.warn("Unable to find object of type {} having value {}", selector, locator);
             return null;
         }
     }

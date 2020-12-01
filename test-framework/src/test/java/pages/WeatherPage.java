@@ -1,8 +1,12 @@
 package pages;
 
+import enums.SelectorTypes;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.ObjectIdentificationUtils;
+import utils.WaitUtils;
 
 public class WeatherPage extends BasePage {
     public WeatherPage(WebDriver driver) {
@@ -15,8 +19,45 @@ public class WeatherPage extends BasePage {
     WebElement loadingBar;
     @FindBy(css = "input[type='text'][id='searchBox']")
     WebElement citySearchBox;
+    @FindBy(className = "leaflet-popup-content")
+    WebElement cityWeatherContent;
 
+    public WeatherPage waitForPageLogo() {
+        WaitUtils.waitForElementVisibility(driver, weatherPageLogo, 5);
+        return this;
+    }
 
+    public WeatherPage setSearchCity(String cityName) {
+        citySearchBox.sendKeys(cityName);
+        return this;
+    }
 
+    public WeatherPage selectCityFromList(String cityName) {
+        WebElement dynamicElement = ObjectIdentificationUtils.findDynamicElement(driver, SelectorTypes.ID, cityName);
+        if (!dynamicElement.isSelected())
+            dynamicElement.click();
+        return this;
+    }
 
+    public WeatherPage clickOnCityInMap(String cityName) {
+        ObjectIdentificationUtils.findDynamicElement(driver, SelectorTypes.CSS, "div[title='"+cityName+"']").click();
+        return this;
+    }
+
+    public WeatherPage waitForWeatherPopup() {
+        WaitUtils.waitForElementVisibility(driver, cityWeatherContent, 10);
+        return this;
+    }
+
+    public String getWeatherDetailsForCity(String detail) {
+        return cityWeatherContent.findElements(By.cssSelector("span.heading"))
+                .stream()
+                .filter(ele -> ele.getText().contains(detail))
+                .findFirst()
+                .get().getText();
+    }
+
+    public boolean loadingBarIsNotDisplayed() {
+        return loadingBar.isDisplayed();
+    }
 }

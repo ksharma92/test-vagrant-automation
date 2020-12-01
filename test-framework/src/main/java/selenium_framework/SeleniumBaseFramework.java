@@ -21,4 +21,6 @@ public class SeleniumBaseFramework {
         setProperties();
         driver = WebDriverFactory.getDriver(Browsers.valueOf(browser), properties);
     }
+
+
 }

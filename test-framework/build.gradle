@@ -15,4 +15,5 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.+'
     compile 'io.qameta.allure:allure-testng:2.13.+'
     compile 'io.rest-assured:rest-assured:4.3.+'
+    compile "org.projectlombok:lombok:1.18.12"
 }

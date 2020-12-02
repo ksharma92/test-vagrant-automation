@@ -53,6 +53,7 @@ public class WeatherPage extends BasePage {
     }
 
     public List<String> getWeatherDetailsForCity() {
+        WaitUtils.waitForElementVisibility(driver, cityWeatherContent, 5);
         return cityWeatherContent.findElements(By.cssSelector("span.heading"))
                 .stream()
                 .map(WebElement::getText)

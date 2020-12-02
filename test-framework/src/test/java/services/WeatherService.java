@@ -1,7 +1,9 @@
 package services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import restassured_framework.RestAssuredHandler;
+import utils.JsonUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +22,8 @@ public class WeatherService extends BaseService {
 //            put("appid", restAssuredHandler.getApiKey());
         }};
         Response response = restAssuredHandler.callGetRequest(apiUrl, queryParams);
+
         System.out.println(response.getBody().asString());
-        return new HashMap<>();
+        return JsonUtils.getJsonObjectAsMap(response.getBody().asString(), "/main");
     }
 }

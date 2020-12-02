@@ -16,4 +16,6 @@ dependencies {
     compile 'io.qameta.allure:allure-testng:2.13.+'
     compile 'io.rest-assured:rest-assured:4.3.+'
     compile "org.projectlombok:lombok:1.18.12"
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.+'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.2'
 }

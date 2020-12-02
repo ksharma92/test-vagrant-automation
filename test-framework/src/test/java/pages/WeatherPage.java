@@ -8,6 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import utils.ObjectIdentificationUtils;
 import utils.WaitUtils;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class WeatherPage extends BasePage {
     public WeatherPage(WebDriver driver) {
         super(driver);
@@ -49,12 +52,11 @@ public class WeatherPage extends BasePage {
         return this;
     }
 
-    public String getWeatherDetailsForCity(String detail) {
+    public List<String> getWeatherDetailsForCity() {
         return cityWeatherContent.findElements(By.cssSelector("span.heading"))
                 .stream()
-                .filter(ele -> ele.getText().contains(detail))
-                .findFirst()
-                .get().getText();
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 
     public boolean loadingBarIsNotDisplayed() {

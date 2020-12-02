@@ -1,5 +1,6 @@
 package selenium_framework;
 
+import enums.Browsers;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;

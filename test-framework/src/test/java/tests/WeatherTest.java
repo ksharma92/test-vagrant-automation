@@ -4,6 +4,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Map;
+
 public class WeatherTest extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
@@ -15,6 +17,8 @@ public class WeatherTest extends BaseTest {
     public void verifyTemperatureForCity() {
         SoftAssert softAssert = new SoftAssert();
         homeActions.navigateToWeatherSection();
-        System.out.println(weatherActions.getWeatherDetailForCity("Pune", "Temp in Degrees"));
+        Map<String, String> weatherMap = weatherActions.getWeatherDetailForCity("Pune");
+        System.out.println(weatherMap.get("Temp in Degrees"));
+
     }
 }

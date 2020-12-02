@@ -1,4 +1,4 @@
-package selenium_framework;
+package enums;
 
 public enum Browsers {
     CHROME, FIREFOX

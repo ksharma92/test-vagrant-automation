@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.WaitUtils;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class HomePage extends BasePage{
     }
 
     public HomePage clickSubMenuOptions() {
-        subMenuOption.click();
+        WaitUtils.waitForElementToBeClickable(driver, subMenuOption, 5).click();
         return this;
     }
 

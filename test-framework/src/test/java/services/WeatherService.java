@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WeatherService extends BaseService {
-    String apiUrl = "";
+    String apiUrl = restAssuredHandler.getBaseUrl();
     Map<String, String> queryParams;
     public WeatherService(RestAssuredHandler restAssuredHandler) {
         super(restAssuredHandler);

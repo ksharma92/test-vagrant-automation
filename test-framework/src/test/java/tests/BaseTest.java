@@ -30,6 +30,7 @@ public class BaseTest extends SeleniumBaseFramework {
 
     private void initServices() {
         restAssuredHandler = new RestAssuredHandler();
+        restAssuredHandler.setBaseUrl(properties.getProperty("apiUrl"));
         restAssuredHandler.setApiKey(properties.getProperty("apiKey"));
         weatherService = new WeatherService(restAssuredHandler);
     }

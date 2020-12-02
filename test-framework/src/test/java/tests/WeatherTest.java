@@ -19,6 +19,6 @@ public class WeatherTest extends BaseTest {
         homeActions.navigateToWeatherSection();
         Map<String, String> weatherMap = weatherActions.getWeatherDetailForCity("Pune");
         System.out.println(weatherMap.get("Temp in Degrees"));
-
+        weatherService.getWeatherDetailsFromApi("Pune");
     }
 }

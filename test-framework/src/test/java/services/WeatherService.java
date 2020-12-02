@@ -1,6 +1,7 @@
 package services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import enums.UnitsOfMeasurement;
 import io.restassured.response.Response;
 import restassured_framework.RestAssuredHandler;
 import utils.JsonUtils;
@@ -15,11 +16,11 @@ public class WeatherService extends BaseService {
         super(restAssuredHandler);
     }
 
-    public Map<String, String> getWeatherDetailsFromApi(String cityName) {
+    public Map getWeatherDetailsFromApi(String cityName, UnitsOfMeasurement units) {
         queryParams = new HashMap() {{
             put("q", cityName);
             put("appid", restAssuredHandler.getApiKey());
-//            put("appid", restAssuredHandler.getApiKey());
+            put("units", units.label);
         }};
         Response response = restAssuredHandler.callGetRequest(apiUrl, queryParams);
 

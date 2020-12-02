@@ -21,7 +21,6 @@ public class RestAssuredHandler {
     @Setter
     protected String apiKey;
 
-
     public Response callGetRequest(String apiUrl, Map<String, String> queryParams) {
         log.info("Test");
         return given()

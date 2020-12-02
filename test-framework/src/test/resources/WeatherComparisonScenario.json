@@ -1,0 +1,18 @@
+[
+  {
+    "scenarioName": "test scenario",
+    "scenarioDescription": "test Description",
+    "execution": "ON",
+    "city": "Pune",
+    "condition": "Temp in Degrees",
+    "variationAllowed": "2"
+  },
+  {
+    "scenarioName": "test scenario2",
+    "scenarioDescription": "test Description",
+    "execution": "ON",
+    "city": "Bangalore",
+    "condition": "Temp in Degrees",
+    "variationAllowed": "2"
+  }
+]

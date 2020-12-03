@@ -20,6 +20,13 @@ dependencies {
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.2'
 }
 
+ext {
+
+    if (!project.hasProperty('testSuite')) {
+        testSuite = 'default.xml'
+    }
+}
+
 test {
     useTestNG() {
         systemProperty 'buildTag', project.hasProperty('buildTag') ? project.buildTag : null

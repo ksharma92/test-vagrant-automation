@@ -66,4 +66,5 @@ public class WeatherTest extends BaseTest {
 
         softAssert.assertAll();
     }
+
 }

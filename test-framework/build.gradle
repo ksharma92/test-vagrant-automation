@@ -19,3 +19,14 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.+'
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.2'
 }
+
+test {
+    useTestNG() {
+        systemProperty 'buildTag', project.hasProperty('buildTag') ? project.buildTag : null
+        systemProperty 'buildNumber', project.hasProperty('buildNumber') ? project.buildNumber : null
+        systemProperty 'buildName', project.hasProperty('buildName') ? project.buildName : null
+        suites "src/test/resources/suites/" + testSuite
+//        threadCount=5
+//        parallel="tests"
+    }
+}

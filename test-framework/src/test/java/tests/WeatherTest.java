@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import selenium_framework.SoftAssertWrapper;
 import utils.AllureUtils;
 import utils.ComparatorUtil;
 import utils.WindowsUtils;
@@ -33,7 +34,7 @@ public class WeatherTest extends BaseTest {
 
     @Test(description = "Comparing whether the temperature displayed on screen matches with the temperate received from the api", dataProvider = "dataProviderForWeatherScenario", dataProviderClass = WeatherInfoProvider.class)
     public void verifyTemperatureForCity(String scenarioName, String scenarioDescription, String city, String condition, String variationAllowed) {
-        SoftAssert softAssert = new SoftAssert();
+        SoftAssert softAssert = new SoftAssertWrapper(driver, allAssertsScreenshot);
         AllureUtils.updateTestCaseDetails(scenarioName, scenarioDescription);
         Map weatherDetailsApi;
         UnitsOfMeasurement unit;

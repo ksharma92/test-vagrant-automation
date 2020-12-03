@@ -22,7 +22,7 @@ public class RestAssuredHandler {
     protected String apiKey;
 
     public Response callGetRequest(String apiUrl, Map<String, String> queryParams) {
-        log.info("Test");
+//        log.info("Test");
         return given()
                 .queryParams(queryParams)
                 .when()

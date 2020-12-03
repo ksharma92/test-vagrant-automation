@@ -1,0 +1,56 @@
+[
+  {
+    "scenarioName": "API - TC001",
+    "scenarioDescription": "To check if the response for temperature (In degrees) generated from the UI Matches the API",
+    "execution": "ON",
+    "city": "Pune",
+    "passAccessToken": true,
+    "unitMeasurement": "METRIC",
+    "expectedResponse": 200
+  },
+  {
+    "scenarioName": "API - TC002",
+    "scenarioDescription": "To check if the response for temperature (In degrees) generated from the UI Matches the API",
+    "execution": "ON",
+    "city": "P",
+    "passAccessToken": true,
+    "unitMeasurement": "METRIC",
+    "expectedResponse": 404
+  },
+  {
+    "scenarioName": "API - TC003",
+    "scenarioDescription": "To check if the response for temperature (In degrees) generated from the UI Matches the API",
+    "execution": "ON",
+    "city": "Bengaluru",
+    "passAccessToken": false,
+    "unitMeasurement": "METRIC",
+    "expectedResponse": 401
+  },
+  {
+    "scenarioName": "API - TC004",
+    "scenarioDescription": "To check if the response for temperature (In degrees) generated from the UI Matches the API",
+    "execution": "ON",
+    "city": "Bangalore",
+    "passAccessToken": true,
+    "unitMeasurement": "METRIC",
+    "expectedResponse": 200
+  },
+  {
+    "scenarioName": "API - TC005",
+    "scenarioDescription": "To check if the response for temperature (In degrees) generated from the UI Matches the API",
+    "execution": "ON",
+    "city": "London, UK",
+    "passAccessToken": true,
+    "unitMeasurement": "METRIC",
+    "expectedResponse": 200
+  },
+  {
+    "scenarioName": "API - TC006",
+    "scenarioDescription": "To check if the response for temperature (In degrees) generated from the UI Matches the API",
+    "execution": "ON",
+    "city": "London, IN",
+    "passAccessToken": true,
+    "unitMeasurement": "METRIC",
+    "expectedResponse": 404
+  }
+]

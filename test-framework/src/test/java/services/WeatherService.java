@@ -3,6 +3,7 @@ package services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import enums.UnitsOfMeasurement;
 import io.restassured.response.Response;
+import lombok.extern.slf4j.Slf4j;
 import restassured_framework.RestAssuredHandler;
 import utils.JsonUtils;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 public class WeatherService extends BaseService {
     String apiUrl = restAssuredHandler.getBaseUrl();
     Map<String, String> queryParams;
@@ -31,5 +33,15 @@ public class WeatherService extends BaseService {
         Map windDetails = JsonUtils.getJsonObjectAsMap(response.getBody().asString(), "/wind");
         tempDetails.putAll(windDetails);
         return tempDetails;
+    }
+
+    public int getWeatherServiceAPIStatusCode(String cityName, UnitsOfMeasurement units, String apiKey) {
+        queryParams = new HashMap() {{
+            put("q", cityName);
+            put("appid", apiKey);
+            put("units", units.label);
+        }};
+        Response response = restAssuredHandler.callGetRequest(apiUrl, queryParams);
+        return response.getStatusCode();
     }
 }

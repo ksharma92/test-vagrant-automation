@@ -12,11 +12,13 @@ import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import static selenium_framework.Constants.CHROMEDRIVER_PATH;
+
 public class WebDriverFactory {
     public static WebDriver getDriver(Browsers browser, Properties properties) {
         WebDriver driver = null;
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            File f = new File("src\\test\\chromedriver\\chromedriver.exe");
+            File f = new File(CHROMEDRIVER_PATH);
             System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
         }
 
@@ -37,13 +39,29 @@ public class WebDriverFactory {
                 driver = new FirefoxDriver(firefoxOptions);
                 break;
         }
-        setTimeout(driver);
+        setTimeout(driver, properties);
         return driver;
     }
 
-    private static void setTimeout(WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+    private static void setTimeout(WebDriver driver, Properties properties) {
+        try {
+            driver.manage().timeouts().implicitlyWait(Long.parseLong(
+                    properties.getProperty("webdriver.implicit.wait")), TimeUnit.SECONDS);
+        } catch (Exception e) {
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        }
+        try {
+            driver.manage().timeouts().setScriptTimeout(Long.parseLong(
+                    properties.getProperty("webdriver.default.wait")), TimeUnit.SECONDS);
+        } catch (Exception e) {
+            driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
+        }
+        try {
+            driver.manage().timeouts().pageLoadTimeout(Long.parseLong(
+                    properties.getProperty("webdriver.pageload.wait")), TimeUnit.SECONDS);
+        } catch (Exception e) {
+            driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        }
+
     }
 }

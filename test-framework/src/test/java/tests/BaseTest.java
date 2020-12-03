@@ -18,7 +18,7 @@ public class BaseTest extends SeleniumBaseFramework {
     @BeforeClass(alwaysRun = true)
     public void test() {
         //todo the url will eventually be picked from a configuration file.
-        baseURL = "https://ndtv.com";
+        baseURL = getURL();
         initActions(driver);
         initServices();
     }
@@ -26,6 +26,10 @@ public class BaseTest extends SeleniumBaseFramework {
     private void initActions(WebDriver driver) {
         homeActions = new HomeActions(driver);
         weatherActions = new WeatherActions(driver);
+    }
+
+    private String getURL() {
+        return properties.getProperty("APP.URL");
     }
 
     private void initServices() {

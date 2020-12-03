@@ -16,7 +16,6 @@ public class WeatherAPIBackendTest extends BaseTest {
         AllureUtils.updateTestCaseDetails(scenarioName, scenarioDescription);
         int responseCode;
         UnitsOfMeasurement units = UnitsOfMeasurement.valueOf(unitOfMeasurement);
-//        System.out.println(weatherService.getWeatherServiceAPIStatusCode("Pune", UnitsOfMeasurement.METRIC, restAssuredHandler.getApiKey()));
         if (passAccessToken)
             responseCode = weatherService.getWeatherServiceAPIStatusCode(city, units, restAssuredHandler.getApiKey());
         else

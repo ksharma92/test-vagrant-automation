@@ -5,6 +5,7 @@ import enums.UnitsOfMeasurement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pojo.WeatherAPIPojo;
+import selenium_framework.SoftAssertWrapper;
 import utils.AllureUtils;
 
 public class WeatherAPIBackendTest extends BaseTest {

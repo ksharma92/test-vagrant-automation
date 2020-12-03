@@ -14,13 +14,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static selenium_framework.Constants.WEATHER_UI_PATH;
+
 @Slf4j
 public class WeatherInfoProvider {
     public static WeatherPojo weatherPojo;
 
     @DataProvider(name = "dataProviderForWeatherScenario")
     public static Iterator<Object[]> weatherDataProvider() {
-        File f = new File("src/test/resources/WeatherComparisonScenario.json");
+        File f = new File(WEATHER_UI_PATH);
         List<Object[]> weatherData = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         try {

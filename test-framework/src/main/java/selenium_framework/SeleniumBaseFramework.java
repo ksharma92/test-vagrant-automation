@@ -16,20 +16,23 @@ public class SeleniumBaseFramework {
     public Properties properties = new Properties();
     protected String className;
     boolean isUiTest = true;
+    protected boolean allAssertsScreenshot = false;
 
     private void setProperties() throws Exception {
         properties.load(this.getClass().getResourceAsStream("/configuration.properties"));
     }
 
-    @Parameters({"browser"})
+    @Parameters({"browser", "allAssertsScreenshot"})
     @BeforeClass
-    public void browserSetup(@Optional("CHROME") String browser) throws Exception {
+    public void browserSetup(@Optional("CHROME") String browser, @Optional("false") boolean allAssertsScreenshot) throws Exception {
         String buildTag = System.getProperty("buildTag");
         setTestType();
         System.out.println("<<<<RUNNING TEST CLASS: " + className + " >>>>");
         setProperties();
-        if (isUiTest)
+        if (isUiTest){
+            this.allAssertsScreenshot = allAssertsScreenshot;
             driver = WebDriverFactory.getDriver(Browsers.valueOf(browser), properties);
+        }
         log.info("<<<<<<<<<<<<<<<<{}>>>>>>>>>>>>>>>", System.getProperty("buildTag"));
     }
 

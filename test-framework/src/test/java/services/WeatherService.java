@@ -8,6 +8,8 @@ import utils.JsonUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WeatherService extends BaseService {
     String apiUrl = restAssuredHandler.getBaseUrl();
@@ -23,8 +25,11 @@ public class WeatherService extends BaseService {
             put("units", units.label);
         }};
         Response response = restAssuredHandler.callGetRequest(apiUrl, queryParams);
-
-        System.out.println(response.getBody().asString());
-        return JsonUtils.getJsonObjectAsMap(response.getBody().asString(), "/main");
+        //have to create two separate maps since the wind and temperature data points are inside different json objects within the main json
+        //I know I can figure something better here, might revisit this if I have time
+        Map tempDetails = JsonUtils.getJsonObjectAsMap(response.getBody().asString(), "/main");
+        Map windDetails = JsonUtils.getJsonObjectAsMap(response.getBody().asString(), "/wind");
+        tempDetails.putAll(windDetails);
+        return tempDetails;
     }
 }

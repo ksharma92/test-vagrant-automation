@@ -25,11 +25,11 @@ public class WeatherInfoProvider {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             ArrayNode arrayNode = (ArrayNode) objectMapper.readTree(f);
-            for(JsonNode jsonNode: arrayNode) {
+            for (JsonNode jsonNode : arrayNode) {
                 weatherPojo = objectMapper.readValue(jsonNode.toString(), WeatherPojo.class);
                 try {
-                    if(ExecutionFlag.valueOf(weatherPojo.getExecution()).equals(ExecutionFlag.ON)) {
-                        Object[] ob = {weatherPojo.getScenarioName(), weatherPojo.getScenarioDescription(), ExecutionFlag.valueOf(weatherPojo.getExecution()), weatherPojo.getCity(),
+                    if (ExecutionFlag.valueOf(weatherPojo.getExecution()).equals(ExecutionFlag.ON)) {
+                        Object[] ob = {weatherPojo.getScenarioName(), weatherPojo.getScenarioDescription(), weatherPojo.getCity(),
                                 weatherPojo.getCondition(), weatherPojo.getVariationAllowed()};
                         weatherData.add(ob);
                     }
